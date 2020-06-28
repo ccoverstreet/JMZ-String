@@ -1,0 +1,4 @@
+test_driver
+objects/*
+*.a
+*.so

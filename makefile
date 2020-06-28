@@ -1,6 +1,9 @@
 libjmzstring.so: objects objects/jmz_string_array.o objects/jmz_string_util.o
 	gcc -shared objects/* -o libjmzstring.so
 
+libjmzstring.a: objects objects/jmz_string_array.o objects/jmz_string_util.o
+	ar rcs libjmzstring.a objects/*
+
 objects:
 	mkdir objects
 

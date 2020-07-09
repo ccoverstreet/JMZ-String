@@ -17,7 +17,7 @@ void *jmz_string_array_create(unsigned int size) {
 	}
 
 	if (size == 0) {
-		arr->strings == NULL;
+		arr->strings = NULL;
 	} else {
 		arr->strings = malloc(size * sizeof(char*));
 		if (arr->strings == NULL) {

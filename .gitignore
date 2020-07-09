@@ -2,3 +2,4 @@ test_driver
 objects/*
 *.a
 *.so
+zig-cache

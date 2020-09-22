@@ -3,9 +3,6 @@
 // September 22, 2020
 // C Library for better string handling and utility functions
 
-typedef struct {
-	char *data;
-} jmz_string;
+#pragma once
 
-jmz_string concat(jmz_string *a, jmz_string *b);
-
+char *jmz_str_concat(const char *a, const char *b);

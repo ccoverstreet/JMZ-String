@@ -4,6 +4,14 @@
 
 #include "../jmz_string.h"
 
-jmz_string jmz_string_concat(jmz_string *a, jmz_string *b) {
-	printf("%s, %s\n", a->data, a->data);
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char *jmz_str_concat(const char *a, const char *b) {
+	char *concat_str = calloc(strlen(a) + strlen(b) + 1, sizeof(char));
+	strcat(concat_str, a);
+	strcat(concat_str, b);
+
+	return concat_str;
 }

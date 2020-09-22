@@ -4,34 +4,47 @@
 // Unit tests for JMZ String
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #include "../jmz_string.h"
 
 typedef struct {
 	const char *name;
-	void (*func)();
+	int (*func)();
 } func_map;
 
-void create_destroy();
+int concat_test();
 
 int main() {
 	func_map tests[] = {
-		{"Creating and Destroying JMZ String", create_destroy}
+		{"String Concatentation", concat_test}
 	};
 
 	for (int i = 0; i < sizeof(tests) / sizeof(func_map); i++) {
 		printf("[Driver]: Running Test \"%s\"\n", tests[i].name);
-		tests[i].func();
+		if (tests[i].func()) {
+			printf("[Driver]: ERROR Test Failed\n");
+		}
 	}
 
 	return 0;
 }
 
-void create_destroy() {
-	printf("CASDASD\n");
-	jmz_string my_string = {"Hello"};
-	jmz_string my_string_2 = {"World"};
+int concat_test() {
+	const char *str_1 = "Hello";
+	const char *str_2 = " World!";
 
-	jmz_string_concat(&my_string, &my_string_2);
-	printf("%s\n", my_string.data);
+	char *concat_str = jmz_str_concat(str_1, str_2);
+
+	printf("\"%s\" + \"%s\" = \"%s\"\n", str_1, str_2, concat_str);
+
+	if (!strcmp("Hello World!", concat_str)) {
+		printf("Concatenated string does not match inputs\n");
+		return 1;
+	}
+
+	free(concat_str);
+
+	return 0;
 }
